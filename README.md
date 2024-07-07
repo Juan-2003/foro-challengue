@@ -24,4 +24,4 @@ El sistema utiliza un enfoque stateless para la autenticación, lo que significa
 ## Documentación
 
 La API está documentada utilizando Swagger, permitiendo a los usuarios explorar los diferentes endpoints, parámetros y respuestas de forma interactiva. 
-Se puede acceder a ella a patir del siguiente link: http://localhost:8080/swagger-ui
+Se puede acceder a ella a patir del siguiente link: http://localhost:8080/swagger-ui/index.html
