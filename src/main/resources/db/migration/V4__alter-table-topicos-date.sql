@@ -1,0 +1,1 @@
+ALTER TABLE topicos CHANGE COLUMN fecha_publicacion fecha_publicacion DATE NOT NULL ;
