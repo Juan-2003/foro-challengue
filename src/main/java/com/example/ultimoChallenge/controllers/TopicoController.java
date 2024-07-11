@@ -51,16 +51,14 @@ public class TopicoController {
     @PutMapping
     @Transactional
     public ResponseEntity<MostrarTopicoDTO> actualizarTopico(@RequestBody @Valid ActualizarTopicoDTO actualizarTopicoDTO){
-        topicoService.actualizarTopico(actualizarTopicoDTO);
-
-        Topico topico = topicoRepository.getReferenceById(actualizarTopicoDTO.id());
-        return ResponseEntity.ok(new MostrarTopicoDTO(topico));
+        MostrarTopicoDTO mostrarTopicoDTO = topicoService.actualizarTopico(actualizarTopicoDTO);
+        return ResponseEntity.ok(mostrarTopicoDTO);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity eliminarTopico(@PathVariable Long id){
         topicoService.eliminiarTopico(id);
-        topicoRepository.delete(topicoRepository.getReferenceById(id));
         return ResponseEntity.noContent().build();
     }
+
 }

@@ -56,7 +56,7 @@ public class TopicoService {
         }
     }
 
-    public void actualizarTopico(ActualizarTopicoDTO actualizarTopicoDTO){
+    public MostrarTopicoDTO actualizarTopico(ActualizarTopicoDTO actualizarTopicoDTO){
         if(topicoRepository.encontrarTitulosIguales(actualizarTopicoDTO.titulo())){
             throw new TituloDuplicado("Ya existe una publicacion con el titulo: "+actualizarTopicoDTO.titulo()+".Elija otro.");
         }
@@ -66,6 +66,8 @@ public class TopicoService {
 
         Topico topico = topicoRepository.getReferenceById(actualizarTopicoDTO.id());
         topico.actualizarTopico(actualizarTopicoDTO);
+
+        return new MostrarTopicoDTO(topico);
     }
 
     public void eliminiarTopico(Long id){
@@ -73,10 +75,12 @@ public class TopicoService {
             throw new IdentificadorNulo("El id es obligatorio");
         }
 
-        Optional<Topico> topico = topicoRepository.findById(id);
+        Optional<Topico> optionalTopico = topicoRepository.findById(id);
 
-        if(topico.isEmpty()){
+        if(optionalTopico.isEmpty()){
             throw new IdentificadorNoEcontrado("No existe ese id: "+id);
         }
+        topicoRepository.delete(topicoRepository.getReferenceById(id));
     }
+
 }
