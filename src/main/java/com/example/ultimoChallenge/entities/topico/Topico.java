@@ -1,6 +1,7 @@
 package com.example.ultimoChallenge.entities.topico;
 
 import com.example.ultimoChallenge.entities.curso.Curso;
+import com.example.ultimoChallenge.entities.respuesta.Respuesta;
 import com.example.ultimoChallenge.entities.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,6 +11,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Topico")
 @Table(name = "topicos")
@@ -37,6 +40,9 @@ public class Topico {
     @ManyToOne
     @JoinColumn(name= "curso_id", referencedColumnName = "id")
     private Curso curso;
+
+    @OneToMany(mappedBy = "topico")
+    private List<Respuesta> respuestas = new ArrayList<>();
 
     public Topico(RegistroTopicoDTO registroTopicoDTO, Usuario usuario, Curso curso){
         this.titulo = registroTopicoDTO.titulo();

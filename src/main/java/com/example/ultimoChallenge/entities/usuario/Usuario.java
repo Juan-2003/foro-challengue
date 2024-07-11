@@ -1,5 +1,6 @@
 package com.example.ultimoChallenge.entities.usuario;
 
+import com.example.ultimoChallenge.entities.respuesta.Respuesta;
 import com.example.ultimoChallenge.entities.topico.Topico;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,6 +37,9 @@ public class Usuario implements UserDetails {
 
     @OneToMany(mappedBy = "usuario")
     private List<Topico> topicos = new ArrayList<>();
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Respuesta> respuestas = new ArrayList<>();
 
 
     public Usuario(RegistroUsuarioDTO registroUsuarioDTO){

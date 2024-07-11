@@ -118,7 +118,7 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>10.10.0</version>
 				<configuration>
-					<url>jdbc:mysql://localhost:3306/vollmed-api</url>
+					<url>jdbc:mysql://localhost:3306/ultimochallenge</url>
 					<user>root</user>
 					<password>LionelMessi10</password>
 				</configuration>
